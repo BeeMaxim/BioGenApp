@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">BioGenApp</string>
+
+    <string-array name="parameters_list">
+        <item>Температура</item>
+        <item>CO2</item>
+        <item>Влажность</item>
+    </string-array>
+
+</resources>
