@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:text="Название параметра"/>
+        android:text="@string/parameter_name"/>
 
     <Spinner
         android:id="@+id/spinner"
@@ -17,7 +17,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Дата изменения"/>
+        android:text="@string/date_of_change"/>
 
     <EditText
         android:id="@+id/edit_date"
@@ -28,7 +28,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Время изменения"/>
+        android:text="@string/time_of_change"/>
 
     <EditText
         android:id="@+id/edit_time"
@@ -40,6 +40,6 @@
         android:id="@+id/value_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="значение"/>
+        android:hint="@string/value"/>
 
 </LinearLayout>

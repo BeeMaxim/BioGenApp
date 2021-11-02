@@ -39,7 +39,7 @@
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:onClick="backListener"
-            android:text="назад" />
+            android:text="@string/back" />
 
         <Chronometer
             android:id="@+id/chronometer"
@@ -67,7 +67,7 @@
         android:id="@+id/add_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="добавить параметр"
+        android:text="@string/add_parameter"
         android:onClick="addParameterListener" />
 
 
@@ -76,8 +76,5 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-
-
 
 </LinearLayout>

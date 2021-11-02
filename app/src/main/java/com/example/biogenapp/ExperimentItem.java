@@ -1,25 +1,12 @@
 package com.example.biogenapp;
 
-import android.media.MediaMetadataRetriever;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import org.w3c.dom.Element;
-
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class ExperimentItem implements Serializable {
-    private String time;
-    private String temperature;
     private String name;
     private List<ParameterItem> fields, compFields, toAdapter;
     private long startTime = 0;
@@ -31,11 +18,9 @@ public class ExperimentItem implements Serializable {
 
     ExperimentItem(String Name){
         name = Name;
-        time = "";
-        temperature = "";
-        fields = new ArrayList<ParameterItem>();
-        compFields = new ArrayList<ParameterItem>();
-        toAdapter = new ArrayList<ParameterItem>();
+        fields = new ArrayList<>();
+        compFields = new ArrayList<>();
+        toAdapter = new ArrayList<>();
         lastPause = 0;
         stopTime = 0;
     }
@@ -45,7 +30,10 @@ public class ExperimentItem implements Serializable {
         for (ParameterItem i : fields){
             boolean flag = true;
             for (ParameterItem j : compFields){
-                if (i.getKey().equals(j.getKey())) flag = false;
+                if (i.getKey().equals(j.getKey())) {
+                    flag = false;
+                    break;
+                }
             }
             if (flag) compFields.add(i);
         }
@@ -79,10 +67,6 @@ public class ExperimentItem implements Serializable {
         return startTime;
     }
 
-    public long getStopTime(){
-        return stopTime;
-    }
-
     public long getAllStopTime(){
         if (isPause()) return startTime + stopTime - lastPause;
         return startTime + stopTime;
@@ -94,16 +78,8 @@ public class ExperimentItem implements Serializable {
         pauseFlag = true;
     }
 
-    public void setName(String Name){
-        name = Name;
-    }
-
     public List<ParameterItem> getParameterList(){
         return toAdapter;
-    }
-
-    public String getTime(){
-        return time;
     }
 
     public String getName(){
@@ -119,12 +95,7 @@ public class ExperimentItem implements Serializable {
     }
 
     private void sort(){
-        Comparator<ParameterItem> comparator = new Comparator<ParameterItem>() {
-            @Override
-            public int compare(ParameterItem o1, ParameterItem o2) {
-                return -o1.compareTo(o2);
-            }
-        };
+        Comparator<ParameterItem> comparator = (o1, o2) -> -o1.compareTo(o2);
         Collections.sort(fields, comparator);
     }
 

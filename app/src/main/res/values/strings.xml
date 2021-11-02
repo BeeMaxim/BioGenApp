@@ -1,10 +1,21 @@
 <resources>
     <string name="app_name">BioGenApp</string>
+    <string name="new_experiment">new experiment</string>
+    <string name="not_started">Not started</string>
+    <string name="back">back</string>
+    <string name="add_parameter">add parameter</string>
+    <string name="add_experiment">Add experiment</string>
+    <string name="delete">delete?</string>
+    <string name="experiment_name">experiment name</string>
+    <string name="parameter_name">parameter name</string>
+    <string name="date_of_change">Date of change</string>
+    <string name="time_of_change">Time of change</string>
+    <string name="value">value</string>
 
     <string-array name="parameters_list">
-        <item>Температура</item>
+        <item>Temperature</item>
         <item>CO2</item>
-        <item>Влажность</item>
+        <item>humidity</item>
     </string-array>
 
 </resources>

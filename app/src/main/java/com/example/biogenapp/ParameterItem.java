@@ -1,16 +1,12 @@
 package com.example.biogenapp;
 
-import java.io.Serializable;
-
 class ParameterItem {
     private String parameter;
-    private boolean defined;
     private double value;
     private String date, time;
 
     ParameterItem(String Parameter, double Value, String Date, String Time){
         parameter = Parameter;
-        defined = true;
         value = Value;
         date = Date;
         time = Time;

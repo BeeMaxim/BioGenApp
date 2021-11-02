@@ -9,7 +9,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Добавить эксперимент"
+        android:text="@string/add_experiment"
         android:id="@+id/button"
         android:onClick="addListener"/>
 

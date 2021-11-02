@@ -1,21 +1,14 @@
 package com.example.biogenapp;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.w3c.dom.Text;
-
-import java.util.List;
 
 import static com.example.biogenapp.MainActivity.fields;
 
@@ -30,8 +23,9 @@ public class ParameterListAdapter extends RecyclerView.Adapter<ParameterListAdap
         pos = Pos;
     }
 
+    @NonNull
     @Override
-    public ParameterListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ParameterListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.parameter_layout, parent, false);
         return new ViewHolder(view);
     }
@@ -44,28 +38,20 @@ public class ParameterListAdapter extends RecyclerView.Adapter<ParameterListAdap
         holder.value.setText(i);
         holder.date.setText(field.getDate());
         holder.time.setText(field.getTime());
-        holder.deleteButton.setOnClickListener(new View.OnClickListener(){
-            @Override public void onClick(View v) {
-                LayoutInflater inflater = LayoutInflater.from(OurContext);
-                View window = inflater.inflate(R.layout.confirm_dialogue, null);
-                AlertDialog.Builder DialogBuilder = new AlertDialog.Builder(OurContext);
-                DialogBuilder.setView(window);
-                DialogBuilder.setPositiveButton("ОК",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                fields.get(pos).remove(position);
-                                notifyDataSetChanged();
-                            }
-                        });
-                DialogBuilder.setNegativeButton("отмена",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-                DialogBuilder.create().show();
+        holder.deleteButton.setOnClickListener(v -> {
+            LayoutInflater inflater = LayoutInflater.from(OurContext);
+            View window = inflater.inflate(R.layout.confirm_dialogue, null);
+            AlertDialog.Builder DialogBuilder = new AlertDialog.Builder(OurContext);
+            DialogBuilder.setView(window);
+            DialogBuilder.setPositiveButton("OK",
+                    (dialog, id) -> {
+                        fields.get(pos).remove(position);
+                        notifyDataSetChanged();
+                    });
+            DialogBuilder.setNegativeButton("cancel",
+                    (dialog, id) -> dialog.cancel());
+            DialogBuilder.create().show();
 
-            }
         });
     }
 
@@ -79,11 +65,11 @@ public class ParameterListAdapter extends RecyclerView.Adapter<ParameterListAdap
         final ImageButton deleteButton;
         ViewHolder(View view) {
             super(view);
-            key = (TextView) view.findViewById(R.id.key_text);
-            value = (TextView) view.findViewById(R.id.value_text);
-            date = (TextView) view.findViewById(R.id.date_text);
-            time = (TextView) view.findViewById(R.id.time_text);
-            deleteButton = (ImageButton) view.findViewById(R.id.delete_button);
+            key = view.findViewById(R.id.key_text);
+            value = view.findViewById(R.id.value_text);
+            date = view.findViewById(R.id.date_text);
+            time = view.findViewById(R.id.time_text);
+            deleteButton = view.findViewById(R.id.delete_button);
         }
     }
 }
