@@ -1,1 +1,3 @@
-# Android app for recording results of experiments
+# BioGenApp
+____
+![t](https://github.com/BeeMaxim/BioGenApp/tree/master/images/main_screen.png)
